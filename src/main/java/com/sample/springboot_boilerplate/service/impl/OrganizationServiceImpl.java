@@ -3,6 +3,7 @@ package com.sample.springboot_boilerplate.service.impl;
 import com.sample.springboot_boilerplate.Db.OrgHandler;
 import com.sample.springboot_boilerplate.dto.OrganizationDTO;
 import com.sample.springboot_boilerplate.dto.ProductDTO;
+import com.sample.springboot_boilerplate.dto.EmailDTO;
 import com.sample.springboot_boilerplate.dto.EmployeeDTO;
 
 import com.sample.springboot_boilerplate.entity.Organization;
@@ -65,6 +66,22 @@ public class OrganizationServiceImpl implements OrganizationService {
              dto.setEmp_name((String) org[2]);
 
 
+             product.add(dto);
+        }
+
+        return product;
+    }
+    @Override
+    public List<EmailDTO> getEmailList(String email) {
+        List<Object[]> orgs = orgHandler.getEmailList(email);
+        List<EmailDTO> product = new ArrayList<>();
+
+        for  (Object[] org : orgs) {
+             EmailDTO dto = new EmailDTO();
+             dto.setId(Integer.parseInt(Objects.toString(org[0])));
+             dto.setOrg_id(Integer.parseInt(Objects.toString(org[1])));
+             dto.setEmp_name((String) org[2]);
+             dto.setEmployee_email((String) org[3]);
              product.add(dto);
         }
 

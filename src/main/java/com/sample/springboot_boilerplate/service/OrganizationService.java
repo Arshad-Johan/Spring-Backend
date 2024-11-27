@@ -1,5 +1,5 @@
 package com.sample.springboot_boilerplate.service;
-
+import com.sample.springboot_boilerplate.dto.EmailDTO;
 import com.sample.springboot_boilerplate.dto.OrganizationDTO;
 import com.sample.springboot_boilerplate.dto.ProductDTO;
 import com.sample.springboot_boilerplate.dto.EmployeeDTO;
@@ -11,5 +11,6 @@ public interface OrganizationService {
     OrganizationDTO getOrganizationById(Integer id);
     List<ProductDTO> getProductList(Integer id);
     List<EmployeeDTO> getEmployeeList(Integer id);
+    List<EmailDTO> getEmailList(String email);
 }
 

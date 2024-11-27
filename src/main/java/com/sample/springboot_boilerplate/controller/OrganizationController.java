@@ -1,5 +1,5 @@
 package com.sample.springboot_boilerplate.controller;
-
+import com.sample.springboot_boilerplate.dto.EmailDTO;
 import com.sample.springboot_boilerplate.dto.EmployeeDTO;
 import com.sample.springboot_boilerplate.dto.OrganizationDTO;
 import com.sample.springboot_boilerplate.dto.ProductDTO;
@@ -39,7 +39,11 @@ public class OrganizationController {
         List<EmployeeDTO> product = organizationService.getEmployeeList(id);
         return ResponseEntity.ok(product);
     }
-
+    @GetMapping("/employee/{manager_email}/direct_reports")
+    public ResponseEntity<List<EmailDTO>> getEmailList(@PathVariable("manager_email") String email){
+        List<EmailDTO> mail = organizationService.getEmailList(email);
+        return ResponseEntity.ok(mail);
+    }
     @GetMapping("/get/{id}")
     public ResponseEntity<?> getOrganizationById(@PathVariable Integer id) {
         try {
